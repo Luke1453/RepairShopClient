@@ -21,9 +21,9 @@ namespace RepairShopClient {
 
         public MainWindow() {
             InitializeComponent();
-            StartPage startPage = new StartPage();
+            MainMenuPage mainMenuPage = new MainMenuPage();
 
-            setFrame(startPage);
+            setFrame(mainMenuPage);
         }
 
         public void setFrame(Page page) {

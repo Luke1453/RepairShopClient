@@ -8,7 +8,7 @@
         Title="MainWindow" Height="450" Width="800">
     <Grid>
 
-        <Frame x:Name="mainFrame" Height="500" Width="800" NavigationUIVisibility="Hidden" HorizontalContentAlignment="Stretch" VerticalContentAlignment="Stretch" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" />
+        <Frame x:Name="mainFrame" Height="410" Width="785" NavigationUIVisibility="Hidden" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" HorizontalAlignment="Center" VerticalAlignment="Center" />
 
     </Grid>
 </Window>

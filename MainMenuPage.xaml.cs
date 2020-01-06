@@ -15,24 +15,18 @@ using System.Windows.Shapes;
 
 namespace RepairShopClient {
     /// <summary>
-    /// Interaction logic for StartPage.xaml
+    /// Interaction logic for MainMenuPage.xaml
     /// </summary>
-    public partial class StartPage : Page {
-        public StartPage() {
+    public partial class MainMenuPage : Page {
+        public MainMenuPage() {
             InitializeComponent();
         }
 
-        public void startButton(object Sender, RoutedEventArgs e) {
+        private void newRecordClick(object sender, RoutedEventArgs e) {
 
-            Console.WriteLine("startButton");
+            Console.WriteLine("asdasd");
+
+
         }
-
-        private void addItems(object sender, RoutedEventArgs e) {
-
-            Console.WriteLine("AddItems");
-            //var addItemPage = new AddItemPage();
-            //((MainWindow)System.Windows.Application.Current.MainWindow).mainFrame.Content = addItemPage;
-        }
-
     }
 }
