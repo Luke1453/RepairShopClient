@@ -10,24 +10,22 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
 using System.Windows.Shapes;
 
 namespace RepairShopClient {
     /// <summary>
-    /// Interaction logic for MainMenuPage.xaml
+    /// Interaction logic for AddCarWindow.xaml
     /// </summary>
-    public partial class MainMenuPage : Page {
-        public MainMenuPage() {
+    public partial class AddCarWindow : Window {
+        public AddCarWindow() {
             InitializeComponent();
         }
 
-        private void newRecordClick(object sender, RoutedEventArgs e) {
+        private void save_Click(object sender, RoutedEventArgs e) {
 
-            AddCarWindow addCarWindow = new AddCarWindow();
+        }
 
-            addCarWindow.ShowDialog();
-
+        private void cancel_Click(object sender, RoutedEventArgs e) {
 
         }
     }
