@@ -3,6 +3,7 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:sys="clr-namespace:System;assembly=mscorlib"
         xmlns:local="clr-namespace:RepairShopClient"
         mc:Ignorable="d"
         Title="Add Car Window" Height="550" Width="400"
@@ -39,28 +40,65 @@
             <TextBox x:Name="surnameTB" Height="25" Grid.Row="1" Grid.Column="1" Margin="2" VerticalContentAlignment="Center"/>
 
             <Label Content="Telefono NR: " Margin="2" Grid.Row="2" VerticalAlignment="Center" HorizontalAlignment="Right"/>
-            <TextBox x:Name="PhoneTB" Height="25" Grid.Row="2" Grid.Column="1" Margin="2" VerticalContentAlignment="Center"/>
+            <TextBox x:Name="phoneTB" Height="25" Grid.Row="2" Grid.Column="1" Margin="2" VerticalContentAlignment="Center" PreviewTextInput="phoneTB_PreviewTextInput"/>
 
             <Label Content="Priemimo data ir laikas: " Margin="2" Grid.Row="3" VerticalAlignment="Center" HorizontalAlignment="Right"/>
-            <DatePicker x:Name="acceptanceTimeCB" Height="25" Grid.Row="3" Grid.Column="1" Margin="2" VerticalContentAlignment="Center"/>
+            <DatePicker x:Name="acceptanceDateCB" Height="25" Grid.Row="3" Grid.Column="1" Margin="2" VerticalContentAlignment="Center"/>
 
             <Label Content="Markė: " Margin="2" Grid.Row="5" VerticalAlignment="Center" HorizontalAlignment="Right"/>
-            <ComboBox  x:Name="makeTB" Height="25" Grid.Row="5" Grid.Column="1" Margin="2" VerticalContentAlignment="Center" IsEditable="True"/>
+            <ComboBox  x:Name="makeCB" Height="25" Grid.Row="5" Grid.Column="1" Margin="2" VerticalContentAlignment="Center" IsEditable="True"/>
 
             <Label Content="Modelis: " Margin="2" Grid.Row="6" VerticalAlignment="Center" HorizontalAlignment="Right"/>
             <TextBox x:Name="modelTB" Height="25" Grid.Row="6" Grid.Column="1" Margin="2" VerticalContentAlignment="Center"/>
 
             <Label Content="Valstybinis Numeris: " Margin="2" Grid.Row="7" VerticalAlignment="Center" HorizontalAlignment="Right"/>
-            <TextBox x:Name="carNRTB" Height="25" Grid.Row="7" Grid.Column="1" Margin="2" VerticalContentAlignment="Center"/>
+            <TextBox x:Name="carNRTB" Height="25" Grid.Row="7" Grid.Column="1" Margin="2" VerticalContentAlignment="Center" CharacterCasing="Upper"/>
 
             <Label Content="Identifikavimo Nr: " Margin="2" Grid.Row="8" VerticalAlignment="Center" HorizontalAlignment="Right"/>
             <TextBox x:Name="carIDTB" Height="25" Grid.Row="8" Grid.Column="1" Margin="2" VerticalContentAlignment="Center"/>
 
-            <Label Content="Variklio Turis: " Margin="2" Grid.Row="9" VerticalAlignment="Center" HorizontalAlignment="Right"/>
-            <ComboBox  x:Name="engineVolumeCB" Height="25" Grid.Row="9" Grid.Column="1" Margin="2" VerticalContentAlignment="Center" IsEditable="True"/>
+            <Label Content="Variklio Turis (cm³): " Margin="2" Grid.Row="9" VerticalAlignment="Center" HorizontalAlignment="Right"/>
+            <ComboBox  x:Name="engineVolumeCB" Height="25" Grid.Row="9" Grid.Column="1" Margin="2" VerticalContentAlignment="Center" IsEditable="True" PreviewTextInput="engineVolumeCB_PreviewTextInput">
+                <ComboBox.ItemsSource>
+                    <x:Array Type="sys:String">
+                        <sys:String>900</sys:String>
+                        <sys:String>1000</sys:String>
+                        <sys:String>1100</sys:String>
+                        <sys:String>1200</sys:String>
+                        <sys:String>1300</sys:String>
+                        <sys:String>1400</sys:String>
+                        <sys:String>1500</sys:String>
+                        <sys:String>1600</sys:String>
+                        <sys:String>1700</sys:String>
+                        <sys:String>1800</sys:String>
+                        <sys:String>1900</sys:String>
+                        <sys:String>2000</sys:String>
+                        <sys:String>2100</sys:String>
+                        <sys:String>2200</sys:String>
+                        <sys:String>2300</sys:String>
+                        <sys:String>2400</sys:String>
+                        <sys:String>2500</sys:String>
+                        <sys:String>2600</sys:String>
+                        <sys:String>2700</sys:String>
+                        <sys:String>2800</sys:String>
+                        <sys:String>2900</sys:String>
+                        <sys:String>3000</sys:String>
+                        <sys:String>3100</sys:String>
+                        <sys:String>3200</sys:String>
+                        <sys:String>3300</sys:String>
+                        <sys:String>3400</sys:String>
+                        <sys:String>3500</sys:String>
+                        <sys:String>3600</sys:String>
+                        <sys:String>3700</sys:String>
+                        <sys:String>3800</sys:String>
+                        <sys:String>3900</sys:String>
+                        
+                    </x:Array>
+                </ComboBox.ItemsSource>
+            </ComboBox>
 
-            <Label Content="Variklio Galia: " Margin="2" Grid.Row="10" VerticalAlignment="Center" HorizontalAlignment="Right"/>
-            <TextBox x:Name="enginePowerTB" Height="25" Grid.Row="10" Grid.Column="1" Margin="2" VerticalContentAlignment="Center"/>
+            <Label Content="Variklio Galia (KW): " Margin="2" Grid.Row="10" VerticalAlignment="Center" HorizontalAlignment="Right"/>
+            <TextBox x:Name="enginePowerTB" Height="25" Grid.Row="10" Grid.Column="1" Margin="2" VerticalContentAlignment="Center" PreviewTextInput="enginePowerTB_PreviewTextInput"/>
 
             <Label Content="Degalų Tipas: " Margin="2" Grid.Row="11" VerticalAlignment="Center" HorizontalAlignment="Right"/>
             <ComboBox  x:Name="fuelTypeCB" Height="25" Grid.Row="11" Grid.Column="1" Margin="2" VerticalContentAlignment="Center" IsEditable="True"/>
@@ -69,7 +107,7 @@
             <Button Content="Išsaugoti" Width="100" Height="25" Click="save_Click" VerticalAlignment="Center" Grid.Row="12" Grid.ColumnSpan="2" HorizontalAlignment="Right" Margin="0,0,70,0"/>
 
             <Label Content="Automobilio Duomenys" Margin="2" Grid.Row="4" Grid.ColumnSpan="2" VerticalAlignment="Center" HorizontalAlignment="Center"/>
-            
+
 
 
 
