@@ -18,6 +18,9 @@ namespace RepairShopClient {
     /// Interaction logic for MainMenuPage.xaml
     /// </summary>
     public partial class MainMenuPage : Page {
+
+        PageChanger pageChanger = new PageChanger();
+
         public MainMenuPage() {
             InitializeComponent();
         }
@@ -25,10 +28,14 @@ namespace RepairShopClient {
         private void newRecordClick(object sender, RoutedEventArgs e) {
 
             AddCarWindow addCarWindow = new AddCarWindow();
-
             addCarWindow.ShowDialog();
+        }
 
+        private void unfinishedCarBrowserClick(object sender, RoutedEventArgs e) {
+
+            pageChanger.openUnfinishedCarBrowser();
 
         }
+
     }
 }

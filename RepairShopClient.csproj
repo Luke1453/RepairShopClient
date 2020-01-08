@@ -63,7 +63,11 @@
     <Compile Include="CarData.cs" />
     <Compile Include="Globals.cs" />
     <Compile Include="ISaveDB.cs" />
+    <Compile Include="PageChanger.cs" />
     <Compile Include="SaveUnfinishedCar.cs" />
+    <Compile Include="UnfinishedCarBrowser.xaml.cs">
+      <DependentUpon>UnfinishedCarBrowser.xaml</DependentUpon>
+    </Compile>
     <Page Include="AddCarWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -91,6 +95,10 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="UnfinishedCarBrowser.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs">

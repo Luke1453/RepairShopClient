@@ -5,10 +5,10 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:RepairShopClient"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        Title="MainWindow" Height="850" Width="1200">
     <Grid>
 
-        <Frame x:Name="mainFrame" Height="410" Width="785" NavigationUIVisibility="Hidden" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" HorizontalAlignment="Center" VerticalAlignment="Center" />
+        <Frame x:Name="mainFrame" Height="810" Width="1185" NavigationUIVisibility="Hidden" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" HorizontalAlignment="Center" VerticalAlignment="Center" />
 
     </Grid>
 </Window>
