@@ -24,9 +24,10 @@
                 <RowDefinition/>
             </Grid.RowDefinitions>
 
-            <Button Content="Naujas Įrašas" Width="100" Height="25" Grid.Column="1" Margin="0,10,0,78" HorizontalAlignment="Center" Click="newRecordClick"/>
-            <Button Content="Pabaigtų Įrašų Paieška" Width="150" Height="25" Grid.Column="1" Margin="0,78,0,10" HorizontalAlignment="Center"/>
-            <Button Content="Nepabaigtų Įrašų Paieška" Width="150" Height="25" Grid.Column="1" Margin="0,44,0,44" HorizontalAlignment="Center" Click="unfinishedCarBrowserClick"/>
+            <Button Content="Naujas Įrašas" Width="100" Height="25" Grid.Column="1" Margin="0,10,0,78" HorizontalAlignment="Center" VerticalAlignment="Top" Click="newRecordClick"/>
+            <Button Content="Pabaigtų Įrašų Paieška" Width="150" Height="25" Grid.Column="1" Margin="0,78,0,10" HorizontalAlignment="Center" VerticalAlignment="Top"/>
+            <Button Content="Nepabaigtų Įrašų Paieška" Width="150" Height="25" Grid.Column="1" Margin="0,44,0,44" HorizontalAlignment="Center" VerticalAlignment="Top"
+                    Click="unfinishedCarBrowserClick"/>
 
 
 

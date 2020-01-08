@@ -111,13 +111,5 @@ namespace RepairShopClient {
 
         }
 
-
-
-
-
-
-
-
-
     }
 }

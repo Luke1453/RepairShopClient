@@ -20,12 +20,15 @@ namespace RepairShopClient {
     /// </summary>
     public partial class UnfinishedCarBrowser : Page {
 
-        List<CarData> carDatas= new List<CarData>();
-       
+        List<CarData> carDatas = new List<CarData>();
+        List<CarData> searchCarDatas = new List<CarData>();
+
         public UnfinishedCarBrowser() {
 
             InitializeComponent();
-            
+
+            carDatas.Clear();
+
             DataBaseReader DBreader = new DataBaseReader();
             DBreader.CommandText = "SELECT * FROM StartedCarRepairRecords";
             DBreader.execCommand();
@@ -34,6 +37,7 @@ namespace RepairShopClient {
 
                 CarData carData = new CarData();
 
+                carData.DBId = DBreader.SQLiteDataReader.GetInt32(0);
                 carData.ClientName = DBreader.SQLiteDataReader.GetString(1);
                 carData.ClientSurname = DBreader.SQLiteDataReader.GetString(2);
                 carData.ClientPhone = DBreader.SQLiteDataReader.GetString(3);
@@ -53,6 +57,32 @@ namespace RepairShopClient {
             }
 
             dataGrid.ItemsSource = carDatas;
+
+        }
+
+        private void SearchTB_TextChanged(object sender, TextChangedEventArgs e) {
+
+            if (String.IsNullOrEmpty(((TextBox)sender).Text) || String.IsNullOrWhiteSpace(((TextBox)sender).Text)) {
+
+                dataGrid.ItemsSource = carDatas;
+
+            }
+            else if (((TextBox)sender).Text != null) {
+
+                searchCarDatas.Clear();
+
+                string query = ((TextBox)sender).Text;
+
+                foreach (CarData car in carDatas) {
+
+                    if (car.CarNR.Contains(query)) {
+                        searchCarDatas.Add(car);
+                    }
+
+                }
+
+                dataGrid.ItemsSource = searchCarDatas;
+            }
 
         }
 

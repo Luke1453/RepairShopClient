@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 namespace RepairShopClient {
     public class CarData {
 
-        //raw data for database
+        public int? DBId { get; set; } = null;
         public string ClientName { get; set; }
         public string ClientSurname { get; set; }
         public string ClientPhone { get; set; }
@@ -23,7 +23,8 @@ namespace RepairShopClient {
         //data for showing
         public string CarMakeString { get; set; }
         public string FuelTypeString { get; set; }
-        //public DateTime TimeAddedFrormatted { get; set; }
+        public DateTime TimeAddedFormatted { get; set; }
+        
 
         //TODO: finish vars to make universal
 
@@ -46,6 +47,30 @@ namespace RepairShopClient {
             catch (Exception ex) {
                 throw new Exception(ex.Message);
             }
+
+            //Fueltypestring
+            try {
+                DataBaseReader DBreader = new DataBaseReader();
+                DBreader.SQLiteCommand = DBreader.SQLiteConnection.CreateCommand();
+                DBreader.SQLiteCommand.CommandText = "SELECT FuelType from FuelType WHERE ID=@id";
+                DBreader.SQLiteCommand.Parameters.AddWithValue("@id", this.FuelType);
+                DBreader.SQLiteCommand.Prepare();
+                DBreader.SQLiteDataReader = DBreader.SQLiteCommand.ExecuteReader();
+
+                DBreader.SQLiteDataReader.Read();
+                this.FuelTypeString = DBreader.SQLiteDataReader.GetString(0);
+
+
+            }
+            catch (Exception ex) {
+                throw new Exception(ex.Message);
+            }
+
+            //format date time
+            DateTime dtDateTime = new DateTime(1970, 1, 1, 0, 0, 0, 0, DateTimeKind.Utc);
+            this.TimeAddedFormatted = dtDateTime.AddSeconds(this.TimeAdded).ToLocalTime();  
+
+
         }
     }
 }
