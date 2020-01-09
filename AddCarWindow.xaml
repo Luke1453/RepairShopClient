@@ -46,7 +46,7 @@
             <DatePicker x:Name="acceptanceDateCB" Height="25" Grid.Row="3" Grid.Column="1" Margin="2" VerticalContentAlignment="Center"/>
 
             <Label Content="Markė: " Margin="2" Grid.Row="5" VerticalAlignment="Center" HorizontalAlignment="Right"/>
-            <ComboBox  x:Name="makeCB" Height="25" Grid.Row="5" Grid.Column="1" Margin="2" VerticalContentAlignment="Center" IsEditable="True"/>
+            <ComboBox  x:Name="makeCB" Height="25" Grid.Row="5" Grid.Column="1" Margin="2" VerticalContentAlignment="Center"/>
 
             <Label Content="Modelis: " Margin="2" Grid.Row="6" VerticalAlignment="Center" HorizontalAlignment="Right"/>
             <TextBox x:Name="modelTB" Height="25" Grid.Row="6" Grid.Column="1" Margin="2" VerticalContentAlignment="Center"/>
@@ -101,7 +101,7 @@
             <TextBox x:Name="enginePowerTB" Height="25" Grid.Row="10" Grid.Column="1" Margin="2" VerticalContentAlignment="Center" PreviewTextInput="enginePowerTB_PreviewTextInput"/>
 
             <Label Content="Degalų Tipas: " Margin="2" Grid.Row="11" VerticalAlignment="Center" HorizontalAlignment="Right"/>
-            <ComboBox  x:Name="fuelTypeCB" Height="25" Grid.Row="11" Grid.Column="1" Margin="2" VerticalContentAlignment="Center" IsEditable="True"/>
+            <ComboBox  x:Name="fuelTypeCB" Height="25" Grid.Row="11" Grid.Column="1" Margin="2" VerticalContentAlignment="Center" IsEditable="False" IsTextSearchEnabled="True"/>
 
             <Button Content="Atšaukti" Width="100" Height="25" Click="cancel_Click" VerticalAlignment="Center" Grid.Row="12" Grid.ColumnSpan="2" HorizontalAlignment="Left" Margin="70,0,0,0"/>
             <Button Content="Išsaugoti" Width="100" Height="25" Click="save_Click" VerticalAlignment="Center" Grid.Row="12" Grid.ColumnSpan="2" HorizontalAlignment="Right" Margin="0,0,70,0"/>

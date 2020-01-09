@@ -28,22 +28,30 @@ namespace RepairShopClient {
             acceptanceDateCB.SelectedDate = DateTime.Today;
 
             //populate car brand combobox
-            DataBaseReader DBreader = new DataBaseReader();
-            DBreader.CommandText = "SELECT Brand FROM CarBrands";
+            DataBaseReader DBreader = new DataBaseReader {
+                CommandText = "SELECT Brand FROM CarBrands"
+            };
             DBreader.execCommand();
 
             while (DBreader.SQLiteDataReader.Read()) {
                 makeCB.Items.Add(DBreader.SQLiteDataReader.GetString(0));
             }
 
+            DBreader.closeConnection();
+
+
             //populate fuel type combo box
-            DBreader = new DataBaseReader();
-            DBreader.CommandText = "SELECT FuelType FROM FuelType";
+            DBreader = new DataBaseReader {
+                CommandText = "SELECT FuelType FROM FuelType"
+            };
             DBreader.execCommand();
 
             while (DBreader.SQLiteDataReader.Read()) {
                 fuelTypeCB.Items.Add(DBreader.SQLiteDataReader.GetString(0));
             }
+
+            DBreader.closeConnection();
+            
 
         }
 

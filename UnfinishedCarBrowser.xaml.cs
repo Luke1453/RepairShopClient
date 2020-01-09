@@ -56,6 +56,44 @@ namespace RepairShopClient {
 
             }
 
+            DBreader.closeConnection();
+            dataGrid.ItemsSource = carDatas;
+
+        }
+
+        private void refreshDataGrid() {
+
+            dataGrid.ItemsSource = null;
+            carDatas.Clear();
+
+            DataBaseReader DBreader = new DataBaseReader();
+            DBreader.CommandText = "SELECT * FROM StartedCarRepairRecords";
+            DBreader.execCommand();
+
+            while (DBreader.SQLiteDataReader.Read()) {
+
+                CarData carData = new CarData();
+
+                carData.DBId = DBreader.SQLiteDataReader.GetInt32(0);
+                carData.ClientName = DBreader.SQLiteDataReader.GetString(1);
+                carData.ClientSurname = DBreader.SQLiteDataReader.GetString(2);
+                carData.ClientPhone = DBreader.SQLiteDataReader.GetString(3);
+                carData.TimeAdded = DBreader.SQLiteDataReader.GetInt32(4);
+                carData.CarMake = DBreader.SQLiteDataReader.GetInt32(5);
+                carData.CarModel = DBreader.SQLiteDataReader.GetString(6);
+                carData.CarNR = DBreader.SQLiteDataReader.GetString(7);
+                carData.CarID = DBreader.SQLiteDataReader.GetString(8);
+                carData.EngineVol = DBreader.SQLiteDataReader.GetInt32(9);
+                carData.EnginePower = DBreader.SQLiteDataReader.GetInt32(10);
+                carData.FuelType = DBreader.SQLiteDataReader.GetInt32(11);
+
+                carData.formatData();
+
+                carDatas.Add(carData);
+
+            }
+
+            DBreader.closeConnection();
             dataGrid.ItemsSource = carDatas;
 
         }
@@ -86,5 +124,47 @@ namespace RepairShopClient {
 
         }
 
+        private void archiveButton_Click(object sender, RoutedEventArgs e) {
+
+
+
+        }
+
+        private void cancelButton_Click(object sender, RoutedEventArgs e) {
+
+            PageChanger pageChanger = new PageChanger();
+            pageChanger.openMainMenu();
+        }
+
+        private void deleteButton_Click(object sender, RoutedEventArgs e) {
+
+            if (dataGrid.SelectedItem==null) {
+                return;
+            }
+            else {
+
+                try {
+
+                    
+
+                    DataBaseReader DBreader = new DataBaseReader();
+                    DBreader.SQLiteCommand = DBreader.SQLiteConnection.CreateCommand();
+                    DBreader.SQLiteCommand.CommandText = "DELETE FROM StartedCarRepairRecords where id=@id";
+                    DBreader.SQLiteCommand.Parameters.AddWithValue("@id", ((CarData)dataGrid.SelectedItem).DBId);
+                    DBreader.SQLiteCommand.Prepare();
+                    DBreader.SQLiteCommand.ExecuteNonQuery();
+
+                    DBreader.closeConnection();
+
+                }
+                catch (Exception) {
+
+                    throw;
+                }
+            }
+
+            this.refreshDataGrid();
+
+        }
     }
 }

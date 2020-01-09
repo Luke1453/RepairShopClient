@@ -26,6 +26,11 @@ namespace RepairShopClient {
             SQLiteCommand = SQLiteConnection.CreateCommand();
             SQLiteCommand.CommandText = CommandText;
             SQLiteDataReader = SQLiteCommand.ExecuteReader();
+
+        }
+
+        public void closeConnection() {
+            this.SQLiteConnection.Close();
         }
 
     }

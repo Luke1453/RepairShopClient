@@ -46,7 +46,7 @@
             <Label Content="Paieška Pagal Automobilio Valstybinį Numerį:" HorizontalAlignment="left"  Margin="0" VerticalAlignment="Center"/>
             <TextBox x:Name="searchTB" Width="150" Margin="250,0,0,0" HorizontalAlignment="left" VerticalAlignment="Center" TextChanged="SearchTB_TextChanged" CharacterCasing="Upper"/>
 
-            <DataGrid x:Name="dataGrid" Grid.Row="1" CanUserAddRows="False" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" AutoGenerateColumns="False" Style="{DynamicResource DataGridStyle1}" ItemsSource="{Binding}" >
+            <DataGrid x:Name="dataGrid" Grid.Row="1" SelectionMode="Single" CanUserAddRows="False" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" AutoGenerateColumns="False" Style="{DynamicResource DataGridStyle1}" ItemsSource="{Binding}" >
                 <DataGrid.Columns>
 
                     <DataGridTextColumn Header="Vardas" CanUserSort="False" Width="100" CanUserResize="True" Binding="{Binding ClientName}">
@@ -139,9 +139,13 @@
                 
                 </DataGrid.Columns>
 
-
             </DataGrid>
 
+            <Button Content="Archyvuoti Įrašą" Width="100" Height="25" Click="archiveButton_Click" VerticalAlignment="Center" Grid.Row="3" HorizontalAlignment="Right" Margin="0,0,30,0"/>
+            <Button Content="Atšaukti" Width="100" Height="25" Click="cancelButton_Click" VerticalAlignment="Center" Grid.Row="3" HorizontalAlignment="Right" Margin="0,0,160,0"/>
+            <Button Content="Ištrinti Įrašą" Width="100" Height="25" Click="deleteButton_Click" VerticalAlignment="Center" Grid.Row="3" HorizontalAlignment="Left" Margin="30,0,0,0"/>
+            
+            
         </Grid>
 
     </Grid>

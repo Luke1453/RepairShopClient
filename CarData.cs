@@ -41,7 +41,9 @@ namespace RepairShopClient {
 
                 DBreader.SQLiteDataReader.Read();
                 this.CarMakeString = DBreader.SQLiteDataReader.GetString(0);
-
+                DBreader.closeConnection();
+                int i = 0;
+                Console.WriteLine(i++);
 
             }
             catch (Exception ex) {
