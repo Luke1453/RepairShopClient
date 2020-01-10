@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -16,21 +15,21 @@ using System.Windows.Shapes;
 
 namespace RepairShopClient {
     /// <summary>
-    /// Interaction logic for UnfinishedCarBrowser.xaml
+    /// Interaction logic for FinishedCarBrowser.xaml
     /// </summary>
-    public partial class UnfinishedCarBrowser : Page {
+    public partial class FinishedCarBrowser : Page {
 
-        List<CarData> carDatas = new List<CarData>();
-        List<CarData> searchCarDatas = new List<CarData>();
+        List<CarData> finishedCarDatas = new List<CarData>();
+        List<CarData> searchFinishedCarDatas = new List<CarData>();
 
-        public UnfinishedCarBrowser() {
+        public FinishedCarBrowser() {
 
             InitializeComponent();
 
-            carDatas.Clear();
+            finishedCarDatas.Clear();
 
             DataBaseReader DBreader = new DataBaseReader();
-            DBreader.CommandText = "SELECT * FROM StartedCarRepairRecords";
+            DBreader.CommandText = "SELECT * FROM FinishedCarRepairRecords";
             DBreader.execCommand();
 
             while (DBreader.SQLiteDataReader.Read()) {
@@ -49,25 +48,28 @@ namespace RepairShopClient {
                 carData.EngineVol = DBreader.SQLiteDataReader.GetInt32(9);
                 carData.EnginePower = DBreader.SQLiteDataReader.GetInt32(10);
                 carData.FuelType = DBreader.SQLiteDataReader.GetInt32(11); //chage formatting
+                carData.WorkDescription = DBreader.SQLiteDataReader.GetString(12);
+                carData.WorkPrice = DBreader.SQLiteDataReader.GetFloat(13);
 
                 carData.formatData();
 
-                carDatas.Add(carData);
+                finishedCarDatas.Add(carData);
 
             }
 
             DBreader.closeConnection();
-            dataGrid.ItemsSource = carDatas;
+            dataGrid.ItemsSource = finishedCarDatas;
+
 
         }
 
         private void refreshDataGrid() {
 
             dataGrid.ItemsSource = null;
-            carDatas.Clear();
+            finishedCarDatas.Clear();
 
             DataBaseReader DBreader = new DataBaseReader();
-            DBreader.CommandText = "SELECT * FROM StartedCarRepairRecords";
+            DBreader.CommandText = "SELECT * FROM FinishedCarRepairRecords";
             DBreader.execCommand();
 
             while (DBreader.SQLiteDataReader.Read()) {
@@ -86,15 +88,17 @@ namespace RepairShopClient {
                 carData.EngineVol = DBreader.SQLiteDataReader.GetInt32(9);
                 carData.EnginePower = DBreader.SQLiteDataReader.GetInt32(10);
                 carData.FuelType = DBreader.SQLiteDataReader.GetInt32(11);
+                carData.WorkDescription = DBreader.SQLiteDataReader.GetString(12);
+                carData.WorkPrice = DBreader.SQLiteDataReader.GetFloat(13);
 
                 carData.formatData();
 
-                carDatas.Add(carData);
+                finishedCarDatas.Add(carData);
 
             }
 
             DBreader.closeConnection();
-            dataGrid.ItemsSource = carDatas;
+            dataGrid.ItemsSource = finishedCarDatas;
 
         }
 
@@ -102,43 +106,25 @@ namespace RepairShopClient {
 
             if (String.IsNullOrEmpty(((TextBox)sender).Text) || String.IsNullOrWhiteSpace(((TextBox)sender).Text)) {
 
-                dataGrid.ItemsSource = carDatas;
+                dataGrid.ItemsSource = finishedCarDatas;
 
             }
             else if (((TextBox)sender).Text != null) {
 
-                searchCarDatas.Clear();
+                searchFinishedCarDatas.Clear();
 
                 string query = ((TextBox)sender).Text;
 
-                foreach (CarData car in carDatas) {
+                foreach (CarData car in finishedCarDatas) {
 
                     if (car.CarNR.Contains(query)) {
-                        searchCarDatas.Add(car);
+                        searchFinishedCarDatas.Add(car);
                     }
 
                 }
 
-                dataGrid.ItemsSource = searchCarDatas;
+                dataGrid.ItemsSource = searchFinishedCarDatas;
             }
-
-        }
-
-        private void archiveButton_Click(object sender, RoutedEventArgs e) {
-
-            if ((CarData)dataGrid.SelectedItem != null) {
-
-                FinishCarWindow finishCarWindow = new FinishCarWindow((CarData)dataGrid.SelectedItem);
-                finishCarWindow.ShowDialog();
-
-                if (finishCarWindow.RecordSaved == true) {
-
-                    deleteOrder((CarData)dataGrid.SelectedItem);
-                    refreshDataGrid();
-                }
-
-            }
-
 
         }
 
@@ -168,7 +154,7 @@ namespace RepairShopClient {
 
                 DataBaseReader DBreader = new DataBaseReader();
                 DBreader.SQLiteCommand = DBreader.SQLiteConnection.CreateCommand();
-                DBreader.SQLiteCommand.CommandText = "DELETE FROM StartedCarRepairRecords where id=@id";
+                DBreader.SQLiteCommand.CommandText = "DELETE FROM FinishedCarRepairRecords where id=@id";
                 DBreader.SQLiteCommand.Parameters.AddWithValue("@id", carData.DBId);
                 DBreader.SQLiteCommand.Prepare();
                 DBreader.SQLiteCommand.ExecuteNonQuery();

@@ -20,6 +20,9 @@ namespace RepairShopClient {
         public int EnginePower { get; set; }
         public int FuelType { get; set; }
 
+        public string WorkDescription { get; set; }
+        public float WorkPrice { get; set; }
+
         //data for showing
         public string CarMakeString { get; set; }
         public string FuelTypeString { get; set; }

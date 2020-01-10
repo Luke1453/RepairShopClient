@@ -1,4 +1,4 @@
-﻿<Page x:Class="RepairShopClient.UnfinishedCarBrowser"
+﻿<Page x:Class="RepairShopClient.FinishedCarBrowser"
       xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
@@ -6,15 +6,14 @@
       xmlns:local="clr-namespace:RepairShopClient"
       mc:Ignorable="d" 
       d:DesignHeight="810" d:DesignWidth="1185"
-      Title="UnfinishedCarBrowser">
-
+      Title="FinishedCarBrowser">
     <Page.Resources>
-        
+
         <!-- DataGrid style -->
         <Style x:Key="DataGridStyle1" TargetType="{x:Type DataGrid}">
             <Setter Property="ColumnHeaderStyle" Value="{DynamicResource ColumnHeaderStyle1}"/>
         </Style>
-        
+
         <!-- DataGridColumnHeader style -->
         <Style x:Key="ColumnHeaderStyle1" TargetType="DataGridColumnHeader">
             <Setter Property="HorizontalAlignment" Value="Stretch"/>
@@ -25,12 +24,12 @@
                 </Trigger>
             </Style.Triggers>-->
         </Style>
-    
+
     </Page.Resources>
 
 
     <Grid Margin="0"   Background="LightBlue">
-        <Label Content="Nebaigtu Automobiliu Įrašų Naršyklė" HorizontalAlignment="Center"  Margin="10" VerticalAlignment="Top"/>
+        <Label Content="Baigtu Automobiliu Įrašų Naršyklė" HorizontalAlignment="Center"  Margin="10" VerticalAlignment="Top"/>
 
         <Grid Margin="15,55,15,15">
 
@@ -136,16 +135,31 @@
                             </Style>
                         </DataGridTextColumn.ElementStyle>
                     </DataGridTextColumn>
-                
+
+                    <DataGridTextColumn Header="Darbo Aprašymas" CanUserSort="False" Width="120" CanUserResize="True" Binding="{Binding WorkDescription}">
+                        <DataGridTextColumn.ElementStyle>
+                            <Style TargetType="TextBlock">
+                                <Setter Property="HorizontalAlignment" Value="Center" />
+                            </Style>
+                        </DataGridTextColumn.ElementStyle>
+                    </DataGridTextColumn>
+
+                    <DataGridTextColumn Header="Darbo Kaina" CanUserSort="False" Width="120" CanUserResize="True" Binding="{Binding WorkPrice}">
+                        <DataGridTextColumn.ElementStyle>
+                            <Style TargetType="TextBlock">
+                                <Setter Property="HorizontalAlignment" Value="Center" />
+                            </Style>
+                        </DataGridTextColumn.ElementStyle>
+                    </DataGridTextColumn>
+
                 </DataGrid.Columns>
 
             </DataGrid>
 
-            <Button Content="Archyvuoti Įrašą" Width="100" Height="25" Click="archiveButton_Click" VerticalAlignment="Center" Grid.Row="3" HorizontalAlignment="Right" Margin="0,0,30,0"/>
-            <Button Content="Grišti" Width="100" Height="25" Click="cancelButton_Click" VerticalAlignment="Center" Grid.Row="3" HorizontalAlignment="Right" Margin="0,0,160,0"/>
+            <Button Content="Grišti" Width="100" Height="25" Click="cancelButton_Click" VerticalAlignment="Center" Grid.Row="3" HorizontalAlignment="Right" Margin="0,0,30,0"/>
             <Button Content="Ištrinti Įrašą" Width="100" Height="25" Click="deleteButton_Click" VerticalAlignment="Center" Grid.Row="3" HorizontalAlignment="Left" Margin="30,0,0,0"/>
-            
-            
+
+
         </Grid>
 
     </Grid>

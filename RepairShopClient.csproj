@@ -61,14 +61,29 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="CarData.cs" />
+    <Compile Include="FinishCarWindow.xaml.cs">
+      <DependentUpon>FinishCarWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="FinishedCarBrowser.xaml.cs">
+      <DependentUpon>FinishedCarBrowser.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Globals.cs" />
     <Compile Include="ISaveDB.cs" />
     <Compile Include="PageChanger.cs" />
+    <Compile Include="SaveFinishedCar.cs" />
     <Compile Include="SaveUnfinishedCar.cs" />
     <Compile Include="UnfinishedCarBrowser.xaml.cs">
       <DependentUpon>UnfinishedCarBrowser.xaml</DependentUpon>
     </Compile>
     <Page Include="AddCarWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="FinishCarWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="FinishedCarBrowser.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

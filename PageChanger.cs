@@ -14,6 +14,13 @@ namespace RepairShopClient {
 
         }
 
+        public void openFinishedCarBrowser() {
+
+            FinishedCarBrowser finishedCarBrowser = new FinishedCarBrowser();
+            ((MainWindow)System.Windows.Application.Current.MainWindow).mainFrame.Content = finishedCarBrowser;
+
+        }
+
         public void openMainMenu() {
             MainMenuPage mainMenuPage = new MainMenuPage();
             ((MainWindow)System.Windows.Application.Current.MainWindow).mainFrame.Content = mainMenuPage;

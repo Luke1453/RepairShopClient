@@ -7,7 +7,7 @@ using System.Data.SQLite;
 
 namespace RepairShopClient {
 
-    class SaveUnfinishedCar : ISaveDB {
+    class SaveFinishedCar : ISaveDB {
 
         public SQLiteConnection SQLiteConnection;
         public SQLiteCommand SQLiteCommand;
@@ -19,9 +19,9 @@ namespace RepairShopClient {
                 SQLiteConnection.Open();
 
                 SQLiteCommand = SQLiteConnection.CreateCommand();
-                SQLiteCommand.CommandText = "INSERT INTO StartedCarRepairRecords(CustName, CustSurname, CustPhone, AddmitionTime, CarMake, " +
-                    "CarModel, CarNR, CarEngineID, EngineVolume, EnginePower, FuelType) " +
-                    "VALUES(@name, @surname, @phone, @time, @make, @model, @carNr, @carID, @volume, @power, @fuelType)";
+                SQLiteCommand.CommandText = "INSERT INTO FinishedCarRepairRecords(CustName, CustSurname, CustPhone, AddmitionTime, CarMake, " +
+                    "CarModel, CarNR, CarEngineID, EngineVolume, EnginePower, FuelType, WorkDescription, WorkPrice) " +
+                    "VALUES(@name, @surname, @phone, @time, @make, @model, @carNr, @carID, @volume, @power, @fuelType, @workDescription, @workPrice)";
 
                 SQLiteCommand.Parameters.AddWithValue("@name", carData.ClientName);
                 SQLiteCommand.Parameters.AddWithValue("@surname", carData.ClientSurname);
@@ -34,6 +34,9 @@ namespace RepairShopClient {
                 SQLiteCommand.Parameters.AddWithValue("@volume", carData.EngineVol);
                 SQLiteCommand.Parameters.AddWithValue("@power", carData.EnginePower);
                 SQLiteCommand.Parameters.AddWithValue("@fuelType", carData.FuelType);
+                SQLiteCommand.Parameters.AddWithValue("@workDescription", carData.WorkDescription);
+                SQLiteCommand.Parameters.AddWithValue("@workPrice", carData.WorkPrice);
+
 
                 SQLiteCommand.Prepare();
                 SQLiteCommand.ExecuteNonQuery();

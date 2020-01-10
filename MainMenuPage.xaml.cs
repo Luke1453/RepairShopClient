@@ -37,5 +37,11 @@ namespace RepairShopClient {
 
         }
 
+        private void finishedCarBrowserClick(object sender, RoutedEventArgs e) {
+
+            pageChanger.openFinishedCarBrowser();
+
+        }
+
     }
 }
