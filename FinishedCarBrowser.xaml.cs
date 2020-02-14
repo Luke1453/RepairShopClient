@@ -132,6 +132,7 @@ namespace RepairShopClient {
 
             PageChanger pageChanger = new PageChanger();
             pageChanger.openMainMenu();
+            //this.close
         }
 
         private void deleteButton_Click(object sender, RoutedEventArgs e) {
